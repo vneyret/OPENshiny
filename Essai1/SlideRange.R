@@ -9,19 +9,17 @@
 
 library(shiny)
 
-# Define UI for application that draws a histogram
+# 
 ui <- fluidPage(
-    textInput("name", "What's your name?"),
-    textOutput("greeting")
-  
+  x <- sliderInput("x", label = "If x is", min = 1, max = 50, value = 30),
+  "then x times 5 is",
+  textOutput("product")
 )
 
-# Define server logic required to draw a histogram
 server <- function(input, output, session) {
-   output$greeting <- renderText({
-        paste0("Hello ", input$name)
-    })
+  output$product <- renderText({ 
+    x * 5
+  })
 }
-
 # Run the application 
 shinyApp(ui = ui, server = server)
